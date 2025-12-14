@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galéria - Fotógaléria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFB6C1;
+            --secondary-color: #DC143C;
+            --accent-color: #E6E6FA;
+            --background-color: #FFF0F5;
+            --nav-bg: #FF8DA1;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        nav {
+            background: linear-gradient(135deg, var(--nav-bg), #FFB6C1);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 3em;
+            margin-top: 50px;
+            font-weight: 700;
+        }
+        .gallery-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .nyari-preview {
+            object-position: center 70%;
+        }
+        .randi-preview {
+            object-position: center 30%;
+        }
+        .fotozas-preview {
+            object-position: center 20%;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .card h3 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+        .card p {
+            color: var(--text-color);
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .gallery-cards {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Kezdőlap</a>
+        <a href="nyari.html">Nyári élmény</a>
+        <a href="honap.html">Első hónapunk</a>
+        <a href="randi.html">Első randink</a>
+        <a href="fotozas.html">Első fotózásunk</a>
+    </nav>
+
+    <h1>Galéria</h1>
+    <div class="gallery-cards">
+        <a href="nyari.html" class="card">
+            <img src="nyar1.jpg" alt="Nyári élmény" class="nyari-preview">
+            <div class="card-content">
+                <h3>Nyári élmény</h3>
+                <p>Fedezz fel minket a nyári kalandokban!</p>
+            </div>
+        </a>
+        <a href="honap.html" class="card">
+            <img src="aji-20251214T200030Z-1-001/aji/IMG_5998.JPG" alt="Első hónapunk">
+            <div class="card-content">
+                <h3>Első hónapunk</h3>
+                <p>Emlékek az első hónapunkból együtt.</p>
+            </div>
+        </a>
+        <a href="randi.html" class="card">
+            <img src="aji-20251214T200030Z-1-001/aji/04C1AAA9-7A4B-41A8-BFED-F3D22A5DD891.jpg" alt="Első randink" class="randi-preview">
+            <div class="card-content">
+                <h3>Első randink</h3>
+                <p>Az első randevú emlékei, ahol minden elkezdődött.</p>
+            </div>
+        </a>
+        <a href="fotozas.html" class="card">
+            <img src="drive-download-20251214T211851Z-1-001/IMG_9434.PNG" alt="Első fotózásunk" class="fotozas-preview">
+            <div class="card-content">
+                <h3>Első fotózásunk</h3>
+                <p>A legszebb pillanatok az első fotózásunkból.</p>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
