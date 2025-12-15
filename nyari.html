@@ -33,11 +33,16 @@
         }
         nav .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         nav a {
             color: white;
@@ -48,6 +53,28 @@
             padding: 10px 15px;
             border-radius: 5px;
             transition: all 0.3s ease;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2);
@@ -144,21 +171,158 @@
         .section.active {
             display: block;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            nav {
+                padding: 18px 0;
+            }
+            nav .nav-container {
+                padding: 0 18px;
+            }
             nav a {
-                display: block;
-                margin: 5px 0;
+                font-size: 17px;
+                padding: 12px 18px;
+                margin: 0 15px;
+            }
+            h1 {
+                font-size: 2.5em;
+                margin-top: 40px;
+            }
+            #home {
+                padding: 40px 15px;
+            }
+            #home .content {
+                padding: 18px;
+                max-width: 550px;
+            }
+            #home p {
+                font-size: 1.1em;
             }
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 12px;
+                padding: 18px;
+            }
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
                 padding: 10px;
+            }
+            .hamburger div {
+                width: 28px;
+                height: 4px;
+                margin: 4px 0;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, var(--nav-bg), #FFB6C1);
+                padding: 20px 0;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            nav .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            nav a {
+                margin: 5px 0;
+                padding: 16px 20px;
+                width: 100%;
+                text-align: center;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            h1 {
+                font-size: 2em;
+                margin-top: 30px;
+            }
+            h2 {
+                font-size: 1.5em;
+                margin-top: 15px;
+            }
+            #nyari p {
+                font-size: 1em;
+                margin: 15px 0;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
+                padding: 15px;
             }
             .section {
                 margin: 5px;
                 padding: 5px;
             }
+        }
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 0;
+            }
+            nav .nav-container {
+                padding: 0 15px;
+            }
+            nav a {
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-top: 25px;
+            }
             h2 {
-                font-size: 24px;
+                font-size: 1.3em;
+                margin-top: 12px;
+            }
+            #nyari p {
+                font-size: 0.95em;
+                margin: 12px 0;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 6px;
+                padding: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            nav {
+                padding: 10px 0;
+            }
+            nav .nav-container {
+                padding: 0 10px;
+            }
+            .hamburger div {
+                width: 20px;
+                height: 2px;
+            }
+            nav a {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+            h1 {
+                font-size: 1.5em;
+                margin-top: 20px;
+            }
+            h2 {
+                font-size: 1.1em;
+                margin-top: 10px;
+            }
+            #nyari p {
+                font-size: 0.9em;
+                margin: 10px 0;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 4px;
+                padding: 5px;
             }
         }
         .modal {
@@ -203,11 +367,20 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">Kezdőlap</a>
-        <a href="nyari.html">Nyári élmény</a>
-        <a href="honap.html">Első hónapunk</a>
-        <a href="randi.html">Első randink</a>
-        <a href="fotozas.html">Első fotózásunk</a>
+        <div class="nav-container">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Kezdőlap</a>
+                <a href="nyari.html">Nyári élmény</a>
+                <a href="honap.html">Első hónapunk</a>
+                <a href="randi.html">Első randink</a>
+                <a href="fotozas.html">Első fotózásunk</a>
+            </div>
+        </div>
     </nav>
 
     <div id="nyari">
@@ -230,6 +403,12 @@
     </div>
 
     <script>
+        // Hamburger menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.hamburger').classList.toggle('active');
+        });
+
         // Get the modal
         var modal = document.getElementById("imageModal");
 
