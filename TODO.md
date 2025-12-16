@@ -1,6 +1,16 @@
-# Responsive Design Improvements for Mobile (Nike-like)
+# Navigation Link Updates
 
-## Files to Edit
+## Task Completed
+- [x] Updated navigation links from "index.html" to "gallery.html" in all HTML files:
+  - gallery.html
+  - nyari.html
+  - honap.html
+  - galeria.html
+  - fotozas.html
+  - randi.html
+- [x] Renamed login.html to index.html
+
+## Previous Responsive Design Improvements
 - [x] index.html (homepage - priority)
 - [x] galeria.html (gallery overview)
 - [x] nyari.html (summer gallery)
@@ -8,7 +18,7 @@
 - [x] randi.html (first date gallery)
 - [x] fotozas.html (first photoshoot gallery)
 
-## Changes per File
+## Changes per File (Previous)
 - Add media query for tablets (max-width: 1024px)
 - Improve navbar: larger hamburger, better padding/font sizes
 - Increase gallery image min-widths (e.g., 120px -> 140px on mobile)

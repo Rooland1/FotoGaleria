@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotógaléria</title>
+    <title>Bejelentkezés - Fotógaléria</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #FFB6C1;
@@ -15,549 +14,86 @@
             --nav-bg: #FF8DA1;
             --text-color: #333;
         }
-        html {
-            height: 100%;
-        }
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            position: relative;
-            min-height: 100vh;
-            background-color: var(--background-color);
-            overflow: hidden;
-        }
-        nav {
-            background: linear-gradient(135deg, var(--nav-bg), #FFB6C1);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .nav-links {
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
         }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            font-weight: 500;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
+        .login-container {
             background-color: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-        .hamburger.active div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        .hamburger.active div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
         }
         h1 {
             color: var(--primary-color);
-            text-align: center;
-            font-size: 3em;
-            margin-top: 50px;
-            font-weight: 700;
+            margin-bottom: 30px;
         }
-        h2 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-top: 20px;
-        }
-        #home {
-            text-align: center;
-            padding: 50px 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            position: relative;
-        }
-        .background-images {
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background-color: var(--background-color);
-        }
-        .background-images img {
-            position: absolute;
-            width: 33.33vw;
-            height: 100vh;
-            object-fit: cover;
-        }
-        .background-images img:nth-child(1) {
-            left: 0;
-        }
-        .background-images img:nth-child(2) {
-            left: 33.33vw;
-        }
-        .background-images img:nth-child(3) {
-            left: 66.66vw;
-        }
-        #home .content {
-            background-color: rgba(0,0,0,0.5);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: 0 auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-        }
-        #home p {
-            font-size: 1.2em;
-            margin: 20px 0;
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
         }
         button {
             background-color: var(--secondary-color);
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 1.1em;
+            font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 100%;
         }
         button:hover {
             background-color: var(--primary-color);
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-            padding: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(255, 182, 193, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.5);
-        }
-        .section {
+        .error {
+            color: var(--secondary-color);
+            margin-top: 10px;
             display: none;
-            background-color: rgba(230, 230, 250, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            margin: 10px;
-            position: relative;
-        }
-        .section.active {
-            display: block;
-        }
-        @media (max-width: 1024px) {
-            nav {
-                padding: 18px 0;
-            }
-            nav .nav-container {
-                padding: 0 18px;
-            }
-            nav a {
-                font-size: 17px;
-                padding: 12px 18px;
-                margin: 0 15px;
-            }
-            h1 {
-                font-size: 2.5em;
-                margin-top: 40px;
-            }
-            #home {
-                padding: 40px 15px;
-            }
-            #home .content {
-                padding: 18px;
-                max-width: 550px;
-            }
-            #home p {
-                font-size: 1.1em;
-            }
-            button {
-                padding: 16px 32px;
-                font-size: 1.05em;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-                gap: 12px;
-                padding: 18px;
-            }
-            .background-images img {
-                height: 33.33vh;
-            }
-        }
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-                padding: 10px;
-            }
-            .hamburger div {
-                width: 28px;
-                height: 4px;
-                margin: 4px 0;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: linear-gradient(135deg, var(--nav-bg), #FFB6C1);
-                padding: 20px 0;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            nav .nav-container {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            nav a {
-                margin: 5px 0;
-                padding: 16px 20px;
-                width: 100%;
-                text-align: center;
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            h1 {
-                font-size: 2em;
-                margin-top: 30px;
-            }
-            #home {
-                padding: 20px 10px;
-                min-height: 80vh;
-                background-color: #E6E6FA;
-            }
-            #home .content {
-                padding: 20px;
-                max-width: 90%;
-                background-color: #FFFFFF;
-                color: var(--text-color);
-                text-shadow: none;
-                position: static;
-                transform: none;
-                margin: 0 auto;
-                border-radius: 15px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                border: 2px solid var(--primary-color);
-            }
-            #home p {
-                font-size: 1em;
-            }
-            .background-images {
-                position: fixed;
-                width: 100vw;
-                height: 100vh;
-                top: 0;
-                left: 0;
-                z-index: -1;
-                background-color: var(--background-color);
-            }
-            .background-images img {
-                position: absolute;
-                width: 100vw;
-                height: 100vh;
-                object-fit: cover;
-            }
-            .background-images img:nth-child(1) {
-                left: 0;
-            }
-            .background-images img:nth-child(2) {
-                left: 0;
-            }
-            .background-images img:nth-child(3) {
-                left: 0;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 10px;
-                padding: 15px;
-            }
-            .section {
-                margin: 5px;
-                padding: 5px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            button, a[style*="background-color"] {
-                padding: 16px 32px !important;
-                font-size: 1em;
-                min-height: 44px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-        @media (max-width: 600px) {
-            nav {
-                padding: 15px 0;
-            }
-            nav .nav-container {
-                padding: 0 15px;
-            }
-            nav a {
-                font-size: 16px;
-                padding: 14px 16px;
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            h1 {
-                font-size: 1.8em;
-                margin-top: 25px;
-            }
-            #home {
-                padding: 15px 8px;
-                min-height: 70vh;
-            }
-            #home .content {
-                padding: 12px;
-                max-width: 95%;
-            }
-            #home p {
-                font-size: 0.95em;
-            }
-            .background-images img {
-                height: calc(100vh / 3);
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 8px;
-                padding: 10px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            button, a[style*="background-color"] {
-                padding: 14px 28px !important;
-                font-size: 0.95em;
-                min-height: 44px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-        @media (max-width: 480px) {
-            nav {
-                padding: 10px 0;
-            }
-            nav .nav-container {
-                padding: 0 10px;
-            }
-            .hamburger div {
-                width: 20px;
-                height: 2px;
-            }
-            nav a {
-                font-size: 14px;
-                padding: 10px 12px;
-            }
-            h1 {
-                font-size: 1.5em;
-                margin-top: 20px;
-            }
-            #home {
-                padding: 10px 5px;
-                min-height: 60vh;
-            }
-            #home .content {
-                padding: 10px;
-                max-width: 98%;
-            }
-            #home p {
-                font-size: 0.9em;
-            }
-            .background-images img {
-                height: 20vh;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-                gap: 4px;
-                padding: 5px;
-            }
-            h2 {
-                font-size: 18px;
-            }
-            button {
-                padding: 8px 16px;
-                font-size: 0.85em;
-            }
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
-        }
-        .modal.show {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            margin: auto;
-        }
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .mobile-quote {
-            display: none;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5em;
-            color: black;
-            text-align: center;
-            margin: 20px auto;
-            max-width: 80%;
-            position: relative;
-        }
-        .mobile-quote::before,
-        .mobile-quote::after {
-            content: "🐾";
-            font-size: 1.2em;
-            position: absolute;
-            top: -10px;
-        }
-        .mobile-quote::before {
-            left: -20px;
-        }
-        .mobile-quote::after {
-            right: -20px;
-        }
-        @media (max-width: 768px) {
-            .mobile-quote {
-                display: block;
-            }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Kezdőlap</a>
-                <a href="nyari.html">Nyári élmény</a>
-                <a href="honap.html">Első hónapunk</a>
-                <a href="randi.html">Első randink</a>
-                <a href="fotozas.html">Első fotózásunk</a>
-            </div>
-        </div>
-    </nav>
-    <div id="home">
-        <div class="background-images">
-            <img src="nyar1.jpg" alt="Nyári kép 1">
-            <img src="nyar2.JPG" alt="Nyári kép 2">
-            <img src="aji-20251214T200030Z-1-001/aji/45C5B366-38F6-461A-AD48-52DD1D1F09F3.jpg" alt="Aji kép">
-        </div>
-        <div class="content">
-            <h1>Üdvözöllek a Fotógalériánkban!</h1>
-            <p>Ez az hely ahol emlékeinket őrizzük. Kattints a menüpontokra a különböző emlékek megtekintéséhez.</p>
-            <p>Ez a galéria tartalmazza a legszebb pillanatainkat: nyári kalandokat, első hónapunkat együtt, első randinkat és első fotózásunkat. Nézd meg ezeket az emlékeket és idézd fel a boldog időket!</p>
-            <div id="user-text">
-                <!-- Itt fogod írni a szöveget -->
-            </div>
-            <a href="galeria.html" style="background-color: var(--secondary-color); color: white; text-decoration: none; padding: 15px 30px; font-size: 1.1em; border-radius: 5px; transition: background-color 0.3s;">Belépés a galériába</a>
-        </div>
-        <div class="mobile-quote">
-            "A szerelem nem az, hogy megtaláljuk a tökéletes embert, hanem hogy megtanuljuk szeretni a tökéletlent."
-        </div>
+    <div class="login-container">
+        <h1>Üdvözöllek a Fotógalériánkban!</h1>
+        <p>Kérjük, add meg a jelszót a belépéshez.</p>
+        <input type="password" id="password" placeholder="Jelszó">
+        <button onclick="checkPassword()">Belépés</button>
+        <div class="error" id="error">Hibás jelszó!</div>
     </div>
 
     <script>
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('error');
+            if (password === '20241220') {
+                window.location.href = 'gallery.html';
+            } else {
+                error.style.display = 'block';
+            }
+        }
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
+        // Allow Enter key to submit
+        document.getElementById('password').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
         });
     </script>
 </body>
